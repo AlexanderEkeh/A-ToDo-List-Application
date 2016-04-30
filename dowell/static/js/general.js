@@ -1,12 +1,3 @@
-$(document).ready(function(){
-      $("#btn_add").click(function () {
-          $("#task_tags").append('<div class="ui card" style="max-width: 250px;"><div class="content"><label class="pull-left">Add Task Heading</label><input class="clickedit" type="text" /><div class="clearfix"></div></div><div class="content"><label class="pull-left">Add Task Description</label><input class="clickedit" type="text" /><div class="clearfix"></div></div></div>');
-        });
-      endEdit();
-});
-
-var defaultText = "";
-
 function endEdit(e) {
     defaultText = event.text;
     var input = $(e.target),
@@ -17,19 +8,27 @@ function endEdit(e) {
     label.show();
 }
 
-$('.clickedit').hide()
-.focusout(endEdit)
-.keyup(function (e) {
-    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-        endEdit(e);
-        return false;
-    } else {
-        return true;
-    }
-})
-.prev().click(function () {
-    $(this).hide();
-    $(this).next().show().focus();
+$(document).ready(function(){
+      $("#btn_add").click(function () {
+          $("#task_tags").append('<div class="ui card" style="margin: 2px 3px; max-width: 200px; float: left;"><div class="content"><label class="pull-left">Add Task Heading</label><input class="clickedit" type="text" /><div class="clearfix"></div></div><div class="content"><label class="pull-left">Add Task Description</label><input class="clickedit" type="text" /><div class="clearfix"></div></div></div>');
+      
+      var defaultText = "";
+      $('.clickedit').hide()
+        .focusout(endEdit)
+        .keyup(function (e) {
+            if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+                endEdit(e);
+                return false;
+            } else {
+                return true;
+            }
+        })
+        .prev().click(function () {
+            $(this).hide();
+            $(this).next().show().focus();
+        });
+            });
+
 });
 
 
