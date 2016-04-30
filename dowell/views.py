@@ -56,8 +56,3 @@ def catch_all(path):
 	return render_template(page_link, req_count = req_count, notifi_count = notifi_count,
 		 login_link = login_link, page_title = page_title, page_heading = page_heading)
 
-
-#@app.route('/login/')
-#def login():
-#	login_link = False
-#	return render_template('login.html', login_link = login_link)
