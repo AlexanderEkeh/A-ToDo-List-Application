@@ -7,11 +7,9 @@ function endEdit(e) {
     input.hide();
     label.show();
 }
-
 $(document).ready(function(){
       $("#btn_add").click(function () {
           $("#task_tags").append('<div class="ui card" style="max-width: 200px; margin: 2px 3px; float: left;"><div class="content"><label class="pull-left">Add Task Heading</label><input class="clickedit" type="text" /><div class="clearfix"></div></div><div class="content"><label class="pull-left">Add Task Description</label><input class="clickedit" type="text" /><div class="clearfix"></div></div></div>');
-      
       var defaultText = "";
       $('.clickedit').hide()
         .focusout(endEdit)
@@ -28,5 +26,4 @@ $(document).ready(function(){
             $(this).next().show().focus();
         });
             });
-
 });
