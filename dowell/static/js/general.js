@@ -1,14 +1,9 @@
 $(document).ready(function(){
       $("#btn_add").click(function () {
-          $("#task_tags").append('<div class="ui card my_card"><div class="content"><label class="pull-left">Add Task Heading</label><input class="clickedit" type="text" /><div class="clearfix"></div></div><div class="content"><label class="pull-left">Add Task Description</label><input class="clickedit" type="text" /><div class="clearfix"></div></div></div>');
+          $("#task_tags").append('<div class="ui card" style="max-width: 250px;"><div class="content"><label class="pull-left">Add Task Heading</label><input class="clickedit" type="text" /><div class="clearfix"></div></div><div class="content"><label class="pull-left">Add Task Description</label><input class="clickedit" type="text" /><div class="clearfix"></div></div></div>');
         });
+      endEdit();
 });
-
-$("#btn_add").click(function(){
-  $.getScript('../static/js/general.js', function() {
-  });
-});
-/*https://git.heroku.com/obscure-river-93607.git*/
 
 var defaultText = "";
 
