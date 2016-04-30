@@ -1,0 +1,48 @@
+#bgimg{
+	position: relative;
+	height: 500px;
+	background-image: url("/static/images/notepad.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+#appdesc{
+	font-size: 20px;
+	width: 400px;
+	background-color: #001;
+	opacity: 0.6;
+	color: white;
+	position: absolute;
+	bottom: 30px;
+	right: 100px;
+	padding: 20px;
+	float: right;
+	border-radius: 10px;
+}
+
+.stand_out{
+	font-weight: bolder;
+	font-style: italic;
+	color: green;
+}
+
+.reduce{
+	font-size: 15px;
+}
+
+.center_form{
+	width: 700px;
+	margin: 0 auto;
+}
+
+.divlab:hover {
+    background: #f2f5ff;
+    border-radius:5px;
+    padding:2px 4px;
+}
+
+.my_card{
+	min-width: 50px;
+	max-width: 100px;
+	float: left;
+	margin: 5px;
+}

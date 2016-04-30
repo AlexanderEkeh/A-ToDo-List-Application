@@ -1,0 +1,44 @@
+section.center{
+	width: 60%;
+	margin: 0 auto;
+}
+
+img#dowellimg{
+	float: left;
+	border-radius: 10px;
+	width: 450px;
+	height: 300px;
+	margin: 20px;
+	margin-left: -40px;
+}
+
+span.big{
+	font-size: 40px;
+	margin-left: 20px;
+	margin-bottom: 20px;
+}
+section.center p{
+	text-align: justify;
+}
+h4{
+	margin: 5px;
+	font-family: sans-serif;
+}
+section ul li{
+	font-size: 14px;
+	font-family; cursive;
+}
+
+a div#button{
+	margin-right: 100px;
+	margin-top: 30px;
+	font-size: 50px;
+	color: #D0DCFF;
+	background-color: #698FFF;
+	padding: 15px;
+	border-radius: 5px;
+	border: 10px solid #D0DCFF;
+}
+a:hover div#button{
+	color: white;
+}

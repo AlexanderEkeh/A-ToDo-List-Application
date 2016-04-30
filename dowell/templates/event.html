@@ -1,0 +1,49 @@
+{%extends 'title_inherit.html'%}
+
+{%block body%}
+<div class="ui grid">
+  <div class="ui visible inverted left floated vertical menu four wide column" style="height: 500px; width: 200px;">
+    <a class="item"  href="today">
+      <i class="home icon"></i>
+      Today
+    </a>
+    <a class="item" href="next">
+      <i class="block layout icon"></i>
+      Next 7 Days
+    </a>
+    <hr>
+    <hr>
+    <hr>
+    <h3 style="color: White; text-align: center;">Projects</h3>
+    <a class="item" href="personal">
+      <i class="smile icon"></i>
+      Personal
+    </a>
+    <a class="item" href="work">
+      <i class="calendar icon"></i>
+      Work
+    </a>
+    <a class="item" href="ceremony">
+      <i class="calendar icon"></i>
+      Ceremony
+    </a>
+    <a class="item" href="shopping">
+      <i class="calendar icon"></i>
+      Shopping
+    </a>
+    <a class="item" href="general">
+      <i class="calendar icon"></i>
+      General
+    </a>
+    <a class="item" href="travel">
+      <i class="calendar icon"></i>
+      Travel
+    </a>
+  </div>
+  <div class="floated segment twelve wide column">
+  	<h1 class="ui header">{{page_heading}}</h1>
+  	{%block content%}
+	{%endblock%}
+  </div>
+</div>
+{%endblock%}
