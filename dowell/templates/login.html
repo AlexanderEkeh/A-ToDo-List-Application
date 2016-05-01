@@ -1,0 +1,110 @@
+{%extends 'title_inherit.html'%}
+
+{%block center_body%}
+<div class="ui segment signin {{login_status}}" style="position: relative; margin: 0 auto; max-width: 450px;">
+  <h3 class="ui inverted block header center aligned"> LOG IN </h3>
+  <div class="ui basic segment">
+    <div class="column">
+      <div class="ui stacked segment">
+          <!-- form here -->
+          <div class="ui form">
+            <div class="field">
+              <label> Username </label>
+              <div class="ui left labeled icon input">
+                <input type="text">
+                <i class="user icon"></i>
+              </div>
+            </div>
+            <div class="field">
+              <label> Password </label>
+              <div class="ui left labeled icon input">
+                <input type="password">
+                <i class="lock icon"></i>
+              </div>
+            </div>
+            <div class="inline field">
+              <div class="ui checkbox">
+                <input id="remember" type="checkbox">
+                <label for="remember"> Remember me </label>
+              </div>
+            </div>
+            <a href="/personal"><div class="ui red submit button center"> Log In </div></a>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <!-- text plus button here -->
+    <div class="text"> Not a member? </div>
+    <div class="ui vertical blue mini button signup">
+      <div class="visible content"> Sign Up </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui segment signup {{signup_status}}">
+  <h3 class="ui inverted blue block header"> SIGN UP </h3>
+  <div class="ui blue stacked segment">
+    <!-- form here -->
+    <div class="ui form">
+      <div class="two fields">
+        <div class="field">
+          <!-- Username here -->
+          <label> Username </label>
+          <div class="ui left labeled icon input">
+            <input id="username" placeholder="e.g., Johndoe" type="text">
+            <i class="user icon"></i>
+            <div class="ui corner label">
+              <i class="asterisk icon"></i>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <!-- Email here -->
+          <label> Email </label>
+          <div class="ui left labeled icon input">
+            <input id="email" placeholder="myemail@mydomain.com" type="text">
+            <i class="mail icon"></i>
+            <div class="ui corner label">
+              <i class="asterisk icon"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="two fields">
+        <div class="field">
+          <!-- Password here -->
+          <label> Password </label>
+          <div class="ui left labeled icon input">
+            <input id="password" type="password">
+            <i class="lock icon"></i>
+            <div class="ui corner label">
+              <i class="asterisk icon"></i>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <!-- Confirm Password here -->
+          <label> Confirm Password </label>
+          <div class="ui left labeled icon input">
+            <input id="confirm-password" type="password">
+            <i class="lock icon"></i>
+            <div class="ui corner label">
+              <i class="asterisk icon"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="/personal"><div class="ui red submit button"> Sign Up </div></a>
+      <div class="ui error message"></div>
+    </div>
+  </div>
+  <div class="ui divider"></div>
+  <div class="footer">
+    <div class="text"> Already a member? </div>
+    <div class="ui vertical blue mini button signin">
+      <div class="visible content"> Log In </div>
+    </div>
+  </div>
+</div>
+{%endblock%}
