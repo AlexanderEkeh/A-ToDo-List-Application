@@ -1,1 +1,1 @@
-web: gunicorn dowell:app
+web: gunicorn dowell:app --preload
