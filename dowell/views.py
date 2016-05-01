@@ -6,12 +6,32 @@ req_count = 0
 my_path = []
 
 @app.route('/')
-@app.route('/index', methods=['GET', 'POST'])
+@app.route('/index')
 def index():
 	login_link = True
-	if request.method == 'POST':
-		return redirect(url_for('today'))
 	return render_template('index.html', login_link = login_link)
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+	login_link = "no_display"
+	page_title = "Log In"
+	signup_status = "inactive"
+	login_status = "okay"
+	if request.method == 'POST':
+		return redirect(url_for('personal'))
+	return render_template('login.html', login_link = login_link, page_title = page_title,
+		signup_status = signup_status, login_status = login_status)
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+	login_link = "no_display"
+	page_title = "Sign Up"
+	signup_status = "okay"
+	login_status = "inactive"
+	if request.method == 'POST':
+		return redirect(url_for('personal'))
+	return render_template('login.html', login_link = login_link, page_title = page_title,
+		signup_status = signup_status, login_status = login_status)
 
 
 @app.route('/<path:path>')
@@ -55,4 +75,3 @@ def catch_all(path):
 		page_link = "addtask.html"		
 	return render_template(page_link, req_count = req_count, notifi_count = notifi_count,
 		 login_link = login_link, page_title = page_title, page_heading = page_heading)
-
