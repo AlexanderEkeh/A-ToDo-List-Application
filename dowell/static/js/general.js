@@ -1,18 +1,14 @@
+
+
 $( document ).ready(function() {
 
-  function endEdit(e) {
-      defaultText = event.text;
-      var input = $(e.target),
-          label = input && input.prev();
+  var add_card = function () {
+    $("#task_tags").append('<div class="ui card" style="max-width: 200px; max-height: 250px; margin: 2px 3px; float: left;"><div class="content"><label id="head2" class="pull-left header">Add Task Heading</label></div><div class="content"><label id="desc2" class="pull-left">Add Task Description</label></div><div class="content"><label id="date2" class="pull-left" style="margin-right: 50px;">Date</label><label id="time2" class="pull-left">Time</label></div></div>');
 
-      label.text(input.val() === '' ? defaultText : input.val());
-      input.hide();
-      label.show();
-  }
+    $('.ui.modal')
+      .modal('hide')
+    ;
 
-
-  $("#btn_add").click(function () {
-    $("#task_tags").append('<div class="ui card" style="max-width: 200px; max-height: 300px; margin: 2px 3px; float: left;"><div class="content"><label class="pull-left">Add Task Heading</label><input class="clickedit" type="text" /><div class="clearfix"></div></div><div class="content"><label class="pull-left">Add Task Description</label><input class="clickedit" type="text" /><div class="clearfix"></div></div></div>');
     var defaultText = "";
     $('.clickedit').hide()
       .focusout(endEdit)
@@ -28,18 +24,7 @@ $( document ).ready(function() {
         $(this).hide();
         $(this).next().show().focus();
     });
-  });
-
-  /*
-  function submitForm() {
-        var formData = {
-            field1: getFieldValue('someId')
-        };
-  
-      $.ajax({ type: 'GET', url: '/personal', data: formData, success: onFormSubmitted });
-  }
-*/
-
+  };
 
   $( '.ui.form' )
     .form({
@@ -89,8 +74,28 @@ $( document ).ready(function() {
       }
   });
 
-});
- 
+
+
+  function endEdit(e) {
+      defaultText = event.text;
+      var input = $(e.target),
+          label = input && input.prev();
+
+      label.text(input.val() === '' ? defaultText : input.val());
+      input.hide();
+      label.show();
+  }
+
+  $(function() {
+    $( "#datepicker" ).datepicker({ minDate: 0});
+  });
+
+  $(function() {
+      $('#durationExample').timepicker({
+          'minTime': new Date(),
+          'maxTime': '12:00am'
+      });
+  });
   // Hide Sign Up side on initialization
   $( '.inactive' ).hide();
   $( '.mini.button.signup' ).click(function() {
@@ -109,4 +114,26 @@ $( document ).ready(function() {
     .find( '.ui.segment.signin' )
       .slideDown();
   });
+
+
+document.getElementById('btn_save').onclick = function validate_event(){
+  event_head = document.getElementById('head1').value;
+  event_desc = document.getElementById('desc1').value;
+  event_date = document.getElementById('datepicker').value;
+  event_time = document.getElementById('durationExample').value;
+  if(event_head == "" || event_desc == "" || event_date == "" || event_time == ""){
+    //show warning
+    $('.hide_label').show();
+    document.getElementById('errMessage').innerHTML = "All Fields Are Required.";
+  }else{
+    //run button add command
+    add_card();
+    document.getElementById('head2').innerHTML = event_head;
+    document.getElementById('desc2').innerHTML = event_desc;
+    document.getElementById('time2').innerHTML = event_time;
+    document.getElementById('date2').innerHTML = event_date;
+  }
+}
+});
+ 
 

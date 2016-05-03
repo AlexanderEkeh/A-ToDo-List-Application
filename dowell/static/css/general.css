@@ -30,8 +30,8 @@
 }
 
 .center_form{
-	width: 700px;
-	margin: 0 auto;
+	width: 500px !important;
+	margin: 0 auto !important;
 }
 
 .divlab:hover {
