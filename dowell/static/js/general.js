@@ -75,7 +75,7 @@ var count = 0;
   });
 
 
-document.getElementById('btn_save').onclick = function validate_event(){
+document.getElementById('btn_save').onclick = function(){
   var a_card = "";
   count += 1
   event_head = document.getElementById('head1').value;
