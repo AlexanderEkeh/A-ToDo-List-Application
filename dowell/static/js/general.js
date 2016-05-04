@@ -1,3 +1,4 @@
+
 $( document ).ready(function() {
 var count = 0;
   var add_card = function (new_card) {
@@ -74,24 +75,24 @@ var count = 0;
   });
 
 
-    document.getElementById('btn_save').onclick(function validate_event(){
-      var a_card = "";
-      count += 1
-      event_head = document.getElementById('head1').value;
-      event_desc = document.getElementById('desc1').value;
-      event_date = document.getElementById('datepicker').value;
-      event_time = document.getElementById('durationExample').value;
-      if(event_head == "" || event_desc == "" || event_date == "" || event_time == ""){
-        //show warning
-        $('.hide_label').show();
-        document.getElementById('errMessage').innerHTML = "All Fields Are Required.";
-      }else{
-        //run button add command
-        a_card = '<div class="ui card" style="max-width: 200px; max-height: 250px; margin: 2px 3px; float: left;"><div class="content"><label class="pull-left header">' + event_head + '</label></div><div class="content"><label class="pull-left">' + event_desc + '</label></div><div class="content"><label class="pull-left" style="margin-right: 50px;">' + event_date + '</label><label class="pull-left">' + event_time + '</label></div></div>';
-
-        add_card(a_card);
-      }
-    }
-);
-
+document.getElementById('btn_save').onclick = function validate_event(){
+  var a_card = "";
+  count += 1
+  event_head = document.getElementById('head1').value;
+  event_desc = document.getElementById('desc1').value;
+  event_date = document.getElementById('datepicker').value;
+  event_time = document.getElementById('durationExample').value;
+  if(event_head == "" || event_desc == "" || event_date == "" || event_time == ""){
+    //show warning
+    $('.hide_label').show();
+    document.getElementById('errMessage').innerHTML = "All Fields Are Required.";
+  }else{
+    //run button add command
+    a_card = '<div class="ui card" style="max-width: 200px; max-height: 250px; margin: 2px 3px; float: left;"><div class="content"><label class="pull-left header">' + event_head + '</label></div><div class="content"><label class="pull-left">' + event_desc + '</label></div><div class="content"><label class="pull-left" style="margin-right: 50px;">' + event_date + '</label><label class="pull-left">' + event_time + '</label></div></div>';
+    
+    add_card(a_card);
+  }
+}
 });
+ 
+
