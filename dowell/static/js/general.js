@@ -1,14 +1,11 @@
-
-
 $( document ).ready(function() {
-
-  var add_card = function () {
-    $("#task_tags").append('<div class="ui card" style="max-width: 200px; max-height: 250px; margin: 2px 3px; float: left;"><div class="content"><label id="head2" class="pull-left header">Add Task Heading</label></div><div class="content"><label id="desc2" class="pull-left">Add Task Description</label></div><div class="content"><label id="date2" class="pull-left" style="margin-right: 50px;">Date</label><label id="time2" class="pull-left">Time</label></div></div>');
+var count = 0;
+  var add_card = function (new_card) {
+    $("#task_tags").append(new_card);
 
     $('.ui.modal')
       .modal('hide')
     ;
-
     var defaultText = "";
     $('.clickedit').hide()
       .focusout(endEdit)
@@ -26,54 +23,15 @@ $( document ).ready(function() {
     });
   };
 
-  $( '.ui.form' )
-    .form({
-      username: {
-        identifier : 'username',
-        rules: [
-          {  
-            type   : 'empty',
-            prompt : 'Please enter a username'
-          }
-        ]
-      },
-      email: {
-        identifier : 'email',
-        rules: [
-          {
-            type   : 'email',
-            prompt : 'Please enter a valid email addres'
-          }
-        ]
-      },
-      password: {
-        identifier : 'password',
-        rules: [
-          {
-            type   : 'empty',
-            prompt : 'Please enter a password'
-          },
-          {
-            type   : 'length[2]',
-            prompt : 'Your password must be at least 2 characters'
-          }
-        ]
-      },
-      passwordConfirm: {
-        identifier : 'confirm-password',
-        rules: [
-          {
-            type   : 'empty',
-            prompt : 'Please confirm your password'
-          },
-          {
-            type   : 'match[password]',
-            prompt : 'Password doesn\'t match'
-          }
-        ]
-      }
-  });
 
+  $("#btn_task").click(function(){
+    $('.ui.modal').modal('show');
+    $('.hide_label').hide();
+    document.getElementById('head1').value = "";
+    document.getElementById('desc1').value = "";
+    document.getElementById('datepicker').value = "";
+    document.getElementById('durationExample').value = "";
+  });
 
 
   function endEdit(e) {
@@ -116,24 +74,24 @@ $( document ).ready(function() {
   });
 
 
-document.getElementById('btn_save').onclick = function validate_event(){
-  event_head = document.getElementById('head1').value;
-  event_desc = document.getElementById('desc1').value;
-  event_date = document.getElementById('datepicker').value;
-  event_time = document.getElementById('durationExample').value;
-  if(event_head == "" || event_desc == "" || event_date == "" || event_time == ""){
-    //show warning
-    $('.hide_label').show();
-    document.getElementById('errMessage').innerHTML = "All Fields Are Required.";
-  }else{
-    //run button add command
-    add_card();
-    document.getElementById('head2').innerHTML = event_head;
-    document.getElementById('desc2').innerHTML = event_desc;
-    document.getElementById('time2').innerHTML = event_time;
-    document.getElementById('date2').innerHTML = event_date;
-  }
-}
-});
- 
+    document.getElementById('btn_save').onclick(function validate_event(){
+      var a_card = "";
+      count += 1
+      event_head = document.getElementById('head1').value;
+      event_desc = document.getElementById('desc1').value;
+      event_date = document.getElementById('datepicker').value;
+      event_time = document.getElementById('durationExample').value;
+      if(event_head == "" || event_desc == "" || event_date == "" || event_time == ""){
+        //show warning
+        $('.hide_label').show();
+        document.getElementById('errMessage').innerHTML = "All Fields Are Required.";
+      }else{
+        //run button add command
+        a_card = '<div class="ui card" style="max-width: 200px; max-height: 250px; margin: 2px 3px; float: left;"><div class="content"><label class="pull-left header">' + event_head + '</label></div><div class="content"><label class="pull-left">' + event_desc + '</label></div><div class="content"><label class="pull-left" style="margin-right: 50px;">' + event_date + '</label><label class="pull-left">' + event_time + '</label></div></div>';
 
+        add_card(a_card);
+      }
+    }
+);
+
+);

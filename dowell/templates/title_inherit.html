@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='semantic/dist/semantic.min.css')}}">
     <link href='https://fonts.googleapis.com/css?family=Yellowtail' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/general.css')}}">
-    <link rel="shortcut icon" href="{{url_for('static', filename='images/favicon.ico')}}">
+    <link rel="shortcut icon" href="{{url_for('static', filename='images/favi.ico')}}">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/jquery.timepicker.css')}}" />
 	</head>
@@ -49,7 +49,7 @@
             </button>
 		  {%endif%}
 		</div>
-  {%if login_link == True%}
+  {%if login_link == True or login_link == "welcome"%}
 	<div class="ui container attached fluid">
 		{%block full_width_body%}
 		{%endblock%}
@@ -62,7 +62,7 @@
   {%endif%}
 
 
-	<div class="ui horizontal center aligned segment" style="clear: both;">
+	<div class="ui horizontal center aligned segment" style="clear: both; margin: 0;">
 		<p><em>Copyright &copy; DoWell Web Apps 2016.</em></p>
 	</div>
   <script src="{{url_for('static', filename='js/jquery-2.2.3.min.js')}}"></script>
