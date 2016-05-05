@@ -12,17 +12,22 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
+#right_content{
+    width: 400px;
+    position: absolute;
+    bottom: 30px;
+	right: 100px;
+    float: right;
+    color: darkgray;
+}
+
 #appdesc{
 	font-size: 20px;
-	width: 400px;
 	background-color: #001;
 	opacity: 0.6;
 	color: white;
-	position: absolute;
-	bottom: 30px;
-	right: 100px;
 	padding: 20px;
-	float: right;
 	border-radius: 10px;
 }
 

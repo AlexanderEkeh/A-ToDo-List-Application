@@ -4,16 +4,27 @@
 <section>
 
 <div class="ui grid" id="ind_img">
-  <div id="appdesc">
-  	<p>A web app for easy and efficient planning of your daily activities. Get in the habit of <span class="stand_out">Do</span>ing it <span class="stand_out">Well</span>!</p>
-  	<h3>Key Features</h3>
-  	<ul class="reduce">
-  		<li>Add Events</li>
-  		<li>Set Reminders</li>
-  		<li>Ask for Suggestions or Advice.</li>
-  		<li>Get travel directions, and lots more!</li>
-  	</ul>
-  </div>
+    <div id="right_content">
+        {%if g.user.is_authenticated%}
+        <div style="width: 100%; margin-bottom: 50px;">
+            <a href="/personal">
+                <div class="ui button" style="width: 150px; margin: auto;">
+                <h3> Get Started </h3>
+                </div>
+            </a>
+        </div>
+        {%endif%}
+      <div id="appdesc">
+        <p>A web app for easy and efficient planning of your daily activities. Get in the habit of <span class="stand_out">Do</span>ing it <span class="stand_out">Well</span>!</p>
+        <h3>Key Features</h3>
+        <ul class="reduce">
+            <li>Add Events</li>
+            <li>Set Reminders</li>
+            <li>Ask for Suggestions or Advice.</li>
+            <li>Get travel directions, and lots more!</li>
+        </ul>
+      </div>
+    </div>
 </div>
 </section>
 {%endblock%}

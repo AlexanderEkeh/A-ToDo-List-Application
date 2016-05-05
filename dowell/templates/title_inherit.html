@@ -18,7 +18,7 @@
 		  <a href="/"><div class="header item home_btn">
 		    DoWell
 		  </div></a>
-		  {%if login_link == True%}
+		  {%if not g.user.is_authenticated%}
 			  <div class="right menu">
 			  	<div class="ui menu">
 	  				<div class="item">
@@ -29,7 +29,7 @@
 	  				</div>
 				</div>
 			  </div>
-      {%elif login_link == False%}
+          {%else%}
           <div class="ui compact right menu" style="margin-right: 20px;">
             <a class="item">
               <i class="icon mail"></i> Requests
@@ -44,21 +44,27 @@
               {%endif%}
             </a>
           </div>
-            <button class="ui button" style="margin: 0px 20px;" onclick="location.href='/index'" >
+            <button class="ui button" style="margin: 0px 20px;" onclick="location.href='/logout'" >
               Log Out
             </button>
 		  {%endif%}
 		</div>
-  {%if login_link == True or login_link == "welcome"%}
+  {%if layout == "full"%}
 	<div class="ui container attached fluid">
+    {% for message in get_flashed_messages() %}
+        {{ message }}
+    {% endfor %}
 		{%block full_width_body%}
 		{%endblock%}
 	</div>
   {%else%}
-  <div class="ui column container attached">
-    {%block center_body%}
-    {%endblock%}
-  </div>
+    <div class="ui column container attached">
+    {% for message in get_flashed_messages() %}
+        {{ message }}
+    {% endfor %}
+        {%block center_body%}
+        {%endblock%}
+    </div>
   {%endif%}
 
 
