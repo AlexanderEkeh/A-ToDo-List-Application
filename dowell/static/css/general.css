@@ -1,3 +1,7 @@
+.body_height{
+    min-height: 75%;
+}
+
 #ind_img{
 	position: relative;
 	height: 500px;
@@ -62,13 +66,6 @@
     left: 10px;
     top: 10px;
   }
-  .footer {
-    text-align: right;
-    margin: 0;
-  }
-  .text {
-    display: inline;
-  }
   a {
     text-decoration: none;
     color: #1E90FF;
@@ -84,4 +81,65 @@
     vertical-align: middle;
     width: 100%;
     margin: 0px auto;
+}
+.overflow_header{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.overflow_header:hover{
+	overflow: visible;
+	white-space: pre;
+	position: relative;
+	z-index: 1000;
+}
+.overflow{
+    display: inline-block;
+    text-align: justify;
+    width: 100%;
+    overflow: hidden;
+}
+div.ui.segment{
+	font-size: 14px;
+}
+.shift{
+	margin-left: 15px;
+	font-size: 13px;
+}
+.shift1{
+	margin-left: 3px;
+	font-size: 18px;
+}
+.shift2{
+	margin-left: 6px;
+	font-size: 16px;
+}
+.shift3{
+	margin-left: 9px;
+	font-size: 15px;
+}
+.shift4{
+	margin-left: 12px;
+	font-size: 14px;
+}
+.shift5{
+	margin-left: 15px;
+	font-size: 13px;
+}
+.shift6{
+	margin-left: 18px;
+	font-size: 13px;
+}
+.position{
+	position: absolute;
+}
+.task_left{
+	display: inline-block;
+	margin-top: 10px;
+	margin-left: 50px;	
+	word-spacing: 10px;
+}
+.line{
+	display: inline-block;
+	float: left;
 }

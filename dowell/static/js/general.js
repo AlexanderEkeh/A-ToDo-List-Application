@@ -1,12 +1,11 @@
+$(document).ready(function() {
 
-$( document ).ready(function() {
-var count = 0;
-  var add_card = function (new_card) {
-    $("#task_tags").append(new_card);
+    var add_card = function (new_card) {$("#task_tags").append(new_card);
 
     $('.ui.modal')
       .modal('hide')
     ;
+
     var defaultText = "";
     $('.clickedit').hide()
       .focusout(endEdit)
@@ -25,15 +24,6 @@ var count = 0;
   };
 
 
-  $("#btn_task").click(function(){
-    $('.ui.modal').modal('show');
-    $('.hide_label').hide();
-    document.getElementById('head1').value = "";
-    document.getElementById('desc1').value = "";
-    document.getElementById('datepicker').value = "";
-    document.getElementById('durationExample').value = "";
-  });
-
 
   function endEdit(e) {
       defaultText = event.text;
@@ -46,11 +36,11 @@ var count = 0;
   }
 
   $(function() {
-    $( "#datepicker" ).datepicker({ minDate: 0});
+    $( "#task_date" ).datepicker({ minDate: 0});
   });
 
   $(function() {
-      $('#durationExample').timepicker({
+      $('#task_time').timepicker({
           'minTime': new Date(),
           'maxTime': '12:00am'
       });
@@ -74,25 +64,23 @@ var count = 0;
       .slideDown();
   });
 
+var add_element = function (event_head, event_desc, event_date, event_time, event_id){	
+	
+		a_card = '<div class="ui card" style="display:inline-block;max-width: 200px; margin: 2px 3px; float: left;"><div class="content overflow_header" style="height: 35px; font-size: 15px; font-weight: bold;"><label >' + event_head + '</label></div><div class="content overflow" style="height: 110px;font-size: 12px;"><label class="pull-left">' + event_desc + '</label></div><div class="content" style="height; 40px; font-size: 12px;"><label class="pull-left" style="float: left">'+ event_date +'</label><div class="ui dropdown" style="float: right;margin-left:20px;"><i class="options icon"></i><div class="menu"><div class="item" id="{{event_id}}">\
+                        Edit\
+                    	</div><div class="item">\
+                        Add Reminder\
+                    	</div><div class="item">\
+                        ' + suggest + '\
+                    	</div><div class="item">\
+                        Remove\
+                    	</div></div></div><label class="pull-left" style="float: right">'+ event_time +'</label></div></div>';
 
-document.getElementById('btn_save').onclick = function(){
-  var a_card = "";
-  count += 1
-  event_head = document.getElementById('head1').value;
-  event_desc = document.getElementById('desc1').value;
-  event_date = document.getElementById('datepicker').value;
-  event_time = document.getElementById('durationExample').value;
-  if(event_head == "" || event_desc == "" || event_date == "" || event_time == ""){
-    //show warning
-    $('.hide_label').show();
-    document.getElementById('errMessage').innerHTML = "All Fields Are Required.";
-  }else{
-    //run button add command
-    a_card = '<div class="ui card" style="max-width: 200px; max-height: 250px; margin: 2px 3px; float: left;"><div class="content"><label class="pull-left header">' + event_head + '</label></div><div class="content"><label class="pull-left">' + event_desc + '</label></div><div class="content"><label class="pull-left" style="margin-right: 50px;">' + event_date + '</label><label class="pull-left">' + event_time + '</label></div></div>';
-    
     add_card(a_card);
-  }
 }
-});
- 
 
+ $('.ui.dropdown').dropdown('hide');
+});
+
+
+//if(document.getElementById('btn_save')!=null)

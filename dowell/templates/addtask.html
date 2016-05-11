@@ -2,44 +2,59 @@
 
 {%block content%}
 <div>
-    <div class="ui bottom button" style="margin-bottom: 10px;" id="btn_task">
+    <div class="ui bottom button" style="margin-bottom: 10px;" onclick="$('.ui.modal').modal('show');$('.hide_label').hide();">
       <i class="add icon"></i>
       Add Task
     </div>
 	<div id="task_tags">
-  </div>
-
-<div class="ui modal" style="height: 400px;">
-  <div class="header">
-    Set Event Conditions
-  </div>
-    <div class="ui card" style="width: 500px; margin: 0px auto;">
-        <div class="content">
-          <label class="pull-left" style="display: block; margin-bottom: 5px;">* Add Task Heading</label>
-          <input id="head1" type="text" style="margin-left: 50px;"/>
-        </div>
-        <div class="content">
-          <label class="pull-left" style="display: block; margin-bottom: 5px;">* Add Task Description</label>
-          <textarea  id="desc1" rows="4" cols="50" style="margin-left: 50px;"> </textarea>
-        </div>
-        <div class="content center aligned">
-          <button style="padding: 2px 10px;">
-            * Date:
-          </button>
-          <input type="text" id="datepicker" style="max-width: 90px; margin-right: 50px;">
-          <p style="display: inline;" >* Set Time: <input id="durationExample" type="text" class="time" style="max-width: 90px;"/></p>
-        </div>
-        <label class="pull-left hide_label" style="color: Red; margin-left: 10px;" id="errMessage";>No Text here Now</label>
-        <div class="content center aligned">
-          <button class="ui primary button" id="btn_save" onclick="validate_event()">
-            Save
-          </button>
-        </div>
+		{%for task in task_data%}
+		<script>
+			add_element( "{{task['title']}}", "{{task['description']}}", "{{task['due_date']}}", "{{task['due_time']}}" );
+		</script>
+		{%endfor%}
     </div>
 
-</div>
-
-
-
+    <div class="ui modal" style="height: 400px;">
+      <div class="header">
+        Set Event Conditions
+      </div>
+		<form method="post" action="/addtask" id="taskform">
+        <div class="ui card" style="width: 500px; margin: 0px auto;">
+            <div class="content">
+              <label class="pull-left" style="display: block; margin-bottom: 5px;">* Add Task Heading</label>
+				{{task_form.task_head}}
+				{%if task_form.task_head.errors%}
+                <ul class="errors" style="color: Red;">{%for error in task_form.task_head.errors%}<li>{{ error }}</li>{%endfor%}</ul>
+                {%endif%}
+            </div>
+            <div class="content">
+              <label class="pull-left" style="display: block; margin-bottom: 5px;">* Add Task Description</label>
+				{{task_form.task_desc}}
+				{%if task_form.task_desc.errors%}
+                <ul class="errors" style="color: Red;">{%for error in task_form.task_desc.errors%}<li>{{ error }}</li>{%endfor%}</ul>
+                {%endif%}
+            </div>
+            <div class="content center aligned">
+              <button style="padding: 2px 10px;">
+                * Date:
+              </button>
+				{{task_form.task_date}}
+				{%if task_form.task_date.errors%}
+                <ul class="errors" style="color: Red;">{%for error in task_form.task_date.errors%}<li>{{ error }}</li>{%endfor%}</ul>
+                {%endif%}
+              <p style="display: inline;" >* Set Time: 
+				  {{task_form.task_time}}
+				{%if task_form.task_time.errors%}
+                <ul class="errors" style="color: Red;">{%for error in task_form.task_time.errors%}<li>{{ error }}</li>{%endfor%}</ul>
+                {%endif%}
+				</p>
+            </div>
+            <label class="pull-left hide_label" style="color: Red; margin-left: 10px;" id="errMessage";>No Text here Now</label>
+            <div class="content center aligned">
+				<button class="ui primary submit button" type="submit">Save</button>
+        	</div>
+    	</div>
+		</form>
+	</div>
 </div>
 {%endblock%}

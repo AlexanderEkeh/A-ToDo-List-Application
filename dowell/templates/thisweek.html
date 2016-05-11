@@ -1,0 +1,36 @@
+{%extends 'event.html'%}
+
+{%block content%}
+<div>
+	<div class="ui segments">
+		<div class="ui clearing segment position">
+			<h2 class="line">Tomorrow <span class="shift"> {{days[0]}}</span></h2>
+			<div class="task_left"><a href="/day1">{{task_day1|length}}</a> Tasks(s)</div>
+		</div>
+		<div class="ui clearing segment position">
+			<p class="line"><span class="shift1"> {{days[1]}}</span></p>
+			<div class="task_left"><a href="/day2">{{task_day2|length}}</a> Tasks(s)</div>
+		</div>
+		<div class="ui clearing segment position">
+			<p class="line"><span class="shift2"> {{days[2]}}</span></p>
+			<div class="task_left"><a href="/day3">{{task_day3|length}}</a> Tasks(s)</div>
+		</div>
+		<div class="ui clearing segment position">
+			<p class="line"><span class="shift3"> {{days[3]}}</span></p>
+			<div class="task_left"><a href="/day4">{{task_day4|length}}</a> Tasks(s)</div>
+		</div>
+		<div class="ui clearing segment position">
+			<p class="line"><span class="shift4"> {{days[4]}}</span></p>
+			<div class="task_left"><a href="/day5">{{task_day5|length}}</a> Tasks(s)</div>
+		</div>
+		<div class="ui clearing segment position">
+			<p class="line"><span class="shift5"> {{days[5]}}</span></p>
+			<div class="task_left"><a href="/day6">{{task_day6|length}}</a> Tasks(s)</div>
+		</div>
+		<div class="ui clearing segment position">
+			<p class="line"><span class="shift6"> {{days[6]}}</span></p>
+			<div class="task_left"><a href="/day7">{{task_day7|length}}</a> Tasks(s)</div>
+		</div>
+	</div>
+</div>
+{%endblock%}

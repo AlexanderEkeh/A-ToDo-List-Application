@@ -12,6 +12,8 @@
     <link rel="shortcut icon" href="{{url_for('static', filename='images/favi.ico')}}">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/jquery.timepicker.css')}}" />
+  	<script src="{{url_for('static', filename='js/jquery-2.2.3.min.js')}}"></script>
+  	<script src="{{url_for('static', filename='js/card.js')}}"></script>
 	</head>
 	<body>
 		<div class="ui menu">
@@ -30,35 +32,77 @@
 				</div>
 			  </div>
           {%else%}
-          <div class="ui compact right menu" style="margin-right: 20px;">
-            <a class="item">
-              <i class="icon mail"></i> Requests
-              {%if req_count > 0%}
-                <div class="floating ui red label">{{req_count}}</div>
-              {%endif%}
-            </a>
-            <a class="item">
-              <i class="icon users"></i>Notifications
-              {%if notifi_count > 0%}
-                <div class="floating ui teal label">{{notifi_count}}</div>
-              {%endif%}
+          <div class="ui compact right menu" style="margin-right: 20px;">               
+                
+            <div class="ui dropdown">
+              <div class="text item" style="display: inline-block; margin-top: 20px;">
+                  <i class="dropdown icon"></i>
+                <span class="description">{{req_count}}</span>
+                  Requests
+                </div>
+              <div class="menu">
+                <div class="item">
+                <a href="req_personal">
+                  <span class="description">{{per_req_count}}</span>
+                  Personal
+                </a>
+                </div>
+                <div class="item">
+                <a href="req_work">
+                  <span class="description">{{work_req_count}}</span>
+                  Work
+                </a>
+                </div>
+                <div class="item">
+                <a href="req_ceremony">
+                  <span class="description">{{cer_req_count}}</span>
+                  Ceremony
+                </a>
+                </div>
+                <div class="item">
+                <a href="req_shop">
+                  <span class="description">{{shop_req_count}}</span>
+                  Shopping
+                </a>
+                </div>
+                <div class="item">
+                <a href="req_general">
+                  <span class="description">{{gen_req_count}}</span>
+                  General
+                </a>
+                </div>
+                <div class="item">
+                <a href="req_travel">
+                  <span class="description">{{trav_req_count}}</span>
+                  Travel
+                </a>
+                </div>
+              </div>
+            </div>
+                
+            <a class="text item" href="req_notify">
+              <i class="icon users"></i>
+                Notifications 
+            <span class="description"> {{notifi_count}}</span>
             </a>
           </div>
             <button class="ui button" style="margin: 0px 20px;" onclick="location.href='/logout'" >
               Log Out
             </button>
-		  {%endif%}
-		</div>
+    {%endif%}
+        </div>
   {%if layout == "full"%}
 	<div class="ui container attached fluid">
-    {% for message in get_flashed_messages() %}
-        {{ message }}
-    {% endfor %}
-		{%block full_width_body%}
-		{%endblock%}
+        <div class="body_height">
+            {% for message in get_flashed_messages() %}
+                {{ message }}
+            {% endfor %}
+                {%block full_width_body%}
+                {%endblock%}
+        </div>
 	</div>
   {%else%}
-    <div class="ui column container attached">
+    <div class="ui column container attached body_height">
     {% for message in get_flashed_messages() %}
         {{ message }}
     {% endfor %}
@@ -71,11 +115,11 @@
 	<div class="ui horizontal center aligned segment" style="clear: both; margin: 0;">
 		<p><em>Copyright &copy; DoWell Web Apps 2016.</em></p>
 	</div>
-  <script src="{{url_for('static', filename='js/jquery-2.2.3.min.js')}}"></script>
+<!--  <script src="{{url_for('static', filename='js/jquery-2.2.3.min.js')}}"></script>-->
   <script src="{{url_for('static', filename='semantic/dist/semantic.min.js')}}"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <script type="text/javascript" src="{{url_for('static', filename='js/jquery.timepicker.js')}}"></script>
   <script src="{{url_for('static', filename='js/general.js')}}"></script>
-	</body>
+</body>
 
 </html>
