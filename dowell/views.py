@@ -2,7 +2,7 @@ from dowell import app, db, lm
 from flask import render_template, flash, redirect, request, url_for, session, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from .models import User, Tasks
-from .forms import RegistrationForm, LoginForm, TaskForm
+from .forms import RegistrationForm, LoginForm, TaskForm, ReminderForm
 from sqlalchemy import and_
 import datetime
 from .emails import task_reminder
@@ -193,6 +193,7 @@ def add_task():
 	link_path = link.split('/')
 	link = link_path[len(link_path) - 1]
 	task_form = TaskForm(request.form)
+	reminder_form = ReminderForm(request.form)
 	if link == 'personal' or link == 'login' or link == 'signup':
 		page_heading = "Add Personal Tasks"
 	elif link == 'work':
@@ -208,7 +209,7 @@ def add_task():
 	elif link == 'addtask':
 		return redirect(addtask(task_form))
 	task_data = get_tasks(link)
-	return render_template("addtask.html", req_count = req_count, notifi_count = notifi_count, page_title = link.capitalize(), page_heading = page_heading, layout = "center",  task_form = task_form, task_data = task_data)
+	return render_template("addtask.html", req_count = req_count, notifi_count = notifi_count, page_title = link.capitalize(), page_heading = page_heading, layout = "center",  task_form = task_form, task_data = task_data, reminder_form = reminder_form)
 
 
 @app.route('/req_personal', methods=['GET', 'POST'])
@@ -238,3 +239,42 @@ def comment():
 	elif link == 'req_travel':
 		page_title = "Travel Request"
 	return render_template("solutions.html", req_count = req_count, notifi_count = notifi_count, page_title = page_title, page_heading = page_title, layout = "center")
+
+@app.route('/<path:path>', methods=['GET', 'POST'])
+@login_required
+def catch_all(path):
+	my_path = path.split("/")
+	my_path = my_path[len(my_path) - 1]
+	referrer = request.headers.get("Referer")
+	referrer_path = referrer.split('/')
+	referrer = referrer_path[len(referrer_path) - 1]
+	task_form = TaskForm(request.form)
+	reminder_form = ReminderForm(request.form)
+	if len(my_path) > 7 and my_path[:7] == 'addtask':
+		edit_id = int(my_path[7:])
+		if request.method == 'POST' and task_form.validate():
+			edit_data = Tasks.query.filter(Tasks.id == edit_id).all()
+			edit_data[0].title = task_form.task_head.data
+			edit_data[0].description = task_form.task_desc.data
+			edit_data[0].due_date = task_form.task_date.data
+			edit_data[0].due_time = task_form.task_time.data
+			db.session.commit()
+			return redirect("/" + referrer)
+		elif request.method == 'POST' and reminder_form.validate():
+			edit_data = Tasks.query.filter(Tasks.id == edit_id).all()
+			edit_data[0].reminder_date = reminder_form.reminder_date.data
+			edit_data[0].reminder_time = reminder_form.reminder_time.data
+			db.session.commit()
+			return redirect("/" + referrer)
+		elif request.method == 'POST':
+			req_data = Tasks.query.filter(Tasks.id == edit_id).all()			
+			req_data[0].requests = "Yes"
+			db.session.commit()
+			return redirect("/" + referrer)
+	elif len(my_path) > 7 and my_path[:7] == 'deltask':
+		del_id = int(my_path[7:])
+		if request.method == 'POST':
+			del_data = Tasks.query.filter(Tasks.id == del_id).all()
+			db.session.delete(del_data[0])
+			db.session.commit()
+			return redirect("/" + referrer)

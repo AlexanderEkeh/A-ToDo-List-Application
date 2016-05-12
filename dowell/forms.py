@@ -16,3 +16,7 @@ class TaskForm(Form):
     task_desc = TextAreaField('Description', [validators.Required()])
     task_date = TextField('Date', [validators.Required()])
     task_time = TextField('Time',[validators.Required()])
+	
+class ReminderForm(Form):
+    reminder_date = TextField('Date', [validators.Required()])
+    reminder_time = TextField('Time',[validators.Required()])

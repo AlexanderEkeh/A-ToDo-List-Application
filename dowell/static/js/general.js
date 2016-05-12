@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     var add_card = function (new_card) {$("#task_tags").append(new_card);
 
-    $('.ui.modal')
+    $('#uimodal')
       .modal('hide')
     ;
 
@@ -64,22 +64,23 @@ $(document).ready(function() {
       .slideDown();
   });
 
-var add_element = function (event_head, event_desc, event_date, event_time, event_id){	
-	
-		a_card = '<div class="ui card" style="display:inline-block;max-width: 200px; margin: 2px 3px; float: left;"><div class="content overflow_header" style="height: 35px; font-size: 15px; font-weight: bold;"><label >' + event_head + '</label></div><div class="content overflow" style="height: 110px;font-size: 12px;"><label class="pull-left">' + event_desc + '</label></div><div class="content" style="height; 40px; font-size: 12px;"><label class="pull-left" style="float: left">'+ event_date +'</label><div class="ui dropdown" style="float: right;margin-left:20px;"><i class="options icon"></i><div class="menu"><div class="item" id="{{event_id}}">\
+	var add_element = function (event_head, event_desc, event_date, event_time, task_id){	
+
+			a_card = '<div id="' + task_id + '"class="ui card" style="display:inline-block;max-width: 200px; margin: 2px 3px; float: left;"><div class="content overflow_header" style="height: 35px; font-size: 15px; font-weight: bold;"><label class="the_head">' + event_head + '</label></div><div class="content overflow" style="height: 110px;font-size: 12px;"><label class="pull-left the_desc">' + event_desc + '</label></div><div class="content" style="height; 40px; font-size: 12px;"><label class="pull-left the_date" style="float: left">'+ event_date +'</label><div class="ui dropdown" style="float: right;margin-left:20px;"><i class="options icon"></i><div class="menu"><div class="item" onclick="getdatagetdata(this.parentNode.parentNode.parentNode.parentNode);">\
                         Edit\
-                    	</div><div class="item">\
-                        Add Reminder\
-                    	</div><div class="item">\
-                        ' + suggest + '\
-                    	</div><div class="item">\
-                        Remove\
-                    	</div></div></div><label class="pull-left" style="float: right">'+ event_time +'</label></div></div>';
+				</div><div class="item" onclick="reminder_comment(this.parentNode.parentNode.parentNode.parentNode);">\
+					Add Reminder\
+						</div><div class="item" onclick="request_comment(this.parentNode.parentNode.parentNode.parentNode);">\
+					' + suggest + '\
+				</div><div class="item" onclick="delete_event(this.parentNode.parentNode.parentNode.parentNode);">\
+					Remove\
+				</div></div></div><label class="pull-left the_time" style="float: right">'+ event_time +'</label></div></div>';
 
-    add_card(a_card);
-}
+		add_card(a_card);
+	}
 
- $('.ui.dropdown').dropdown('hide');
+	 $('.ui.dropdown').dropdown('hide');
+	
 });
 
 
