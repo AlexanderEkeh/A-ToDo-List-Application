@@ -1,0 +1,11 @@
+Dear, {{rem_data[0]}}
+
+On behalf of the DoWell Team, I welcome you to our website.
+
+Through this site you will find planning activities an interesting thing to do.
+
+We hope to help you Do your tasks Well.
+
+Regards.
+
+DoWell Admin.

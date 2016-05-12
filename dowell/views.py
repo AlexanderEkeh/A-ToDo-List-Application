@@ -5,6 +5,7 @@ from .models import User, Tasks
 from .forms import RegistrationForm, LoginForm, TaskForm
 from sqlalchemy import and_
 import datetime
+from .emails import task_reminder
 
 notifi_count = 0
 req_count = 0
@@ -18,6 +19,16 @@ def load_user(id):
 @app.before_request
 def before_request():
     g.user = current_user
+
+def get_rem_detail(taskid):
+	rem_data = []
+	task = Tasks.query.filter(Tasks.id == taskid).all()
+	user = User.query.filter(User.id == task[0].user_id).all()
+	rem_data.append(user[0].username)
+	rem_data.append(task[0].title)
+	rem_data.append(task[0].due_date)
+	rem_data.append(task[0].due_time)
+	return rem_data
 
 @app.route('/')
 @app.route('/index')
@@ -69,6 +80,7 @@ def login():
 def welcome():
 	login_link = "welcome"
 	page_title = "Welcome"
+	task_reminder([g.user.username], 'signup', g.user.email)
 	return render_template('welcome.html', login_link = login_link, page_title = page_title,
                           req_count = req_count, notifi_count = notifi_count, layout = "full")
 

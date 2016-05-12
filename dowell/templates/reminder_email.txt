@@ -1,0 +1,9 @@
+Dear {{ rem_data[0] }},
+
+The time for your event, {{rem_data[1]}}, set for {{rem_data[2]}} at {{ rem_data[3]}} is at hand.
+
+Get ready to Do it Well.
+
+Regards,
+
+The DoWell Team.

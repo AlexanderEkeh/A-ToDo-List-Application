@@ -1,6 +1,8 @@
+blinker==1.4
 decorator==4.0.9
 Flask==0.10.1
 Flask-Login==0.3.2
+Flask-Mail==0.9.1
 Flask-SQLAlchemy==2.1
 Flask-WTF==0.12
 gunicorn==19.4.5
