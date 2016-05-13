@@ -1,11 +1,13 @@
 {%extends 'title_inherit.html'%}
 
 {%block center_body%}
-<form method=post action="/login">
-<div class="ui segment signin" style="position: relative; margin: 0 auto; max-width: 450px;">
+
+<div class="ui segment signin" style="position: relative; margin: 0 auto; max-width: 650px;">
   <h3 class="ui inverted block header center aligned"> LOG IN </h3>
   <div class="ui basic segment">
+	  <div class="ui two column middle aligned very relaxed stackable grid">
     <div class="column">
+		<form method=post action="/login">
       <div class="ui stacked segment">
           <!-- form here -->
           <div class="ui form">
@@ -41,8 +43,37 @@
 <!--            <a href="/personal"><div class="ui red submit button center"> Log In </div></a>-->
               <button class="ui red submit button" type=submit>Log In</button>
           </div>
-      </div>
+      </div>		  
+</form>
     </div>
+		  <div class="ui vertical divider">
+    Or
+  </div>
+		   <div class="center aligned column">
+			   <div class="block">
+				<a href="{{ url_for('oauth_authorize', provider='facebook') }}">
+			   <button class="ui facebook button">
+				   <i class="facebook icon"></i>
+				   Facebook
+			   </button></a>
+				   </div>
+			   <div class="block">
+				 <a href="{{ url_for('oauth_authorize', provider='twitter') }}">
+			   <button class="ui twitter button block">
+				   <i class="twitter icon"></i>
+				   Twitter
+			   </button></a>
+				   </div>
+			   <div class="block">
+				 <!-- <a href="{{ url_for('oauth_authorize', provider='google') }}"> -->
+			   <button class="ui google plus button block">
+				   <i class="google plus icon"></i>
+				   Google Plus
+			   </button>
+       <!-- </a> -->
+				   </div>
+		  </div>
+	  </div>
   </div>
   <div class="footer">
     <!-- text plus button here -->
@@ -52,5 +83,4 @@
     </div>
   </div>
 </div>
-</form>
 {%endblock%}

@@ -143,3 +143,7 @@ div.ui.segment{
 	display: inline-block;
 	float: left;
 }
+.block{
+	display: block;
+	margin: 20px;
+}

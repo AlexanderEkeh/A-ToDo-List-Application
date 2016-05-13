@@ -2,12 +2,13 @@ from dowell import db
 
 class User(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
-	username = db.Column(db.String(32), index = True, unique = True)
+	username = db.Column(db.String(32), index = True)
 	email = db.Column(db.String(120), index = True, unique = True)
 	password = db.Column(db.String(120), index = True)
 	tasks = db.relationship('Tasks', backref='owner', lazy='dynamic')
 	comments = db.relationship('Comments', backref='owner', lazy='dynamic')
 	votes = db.relationship('Votes', backref='owner', lazy='dynamic')
+	social_id = db.Column(db.String(64),  nullable=True)
 	
 	@property
 	def is_authenticated(self):
